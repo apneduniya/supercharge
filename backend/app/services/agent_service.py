@@ -10,7 +10,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 from app.core.vectorstore import VectorStore
 from app.core.document.pdf_document import PDFDocumentHandler
-from app.helpers.prompts import KNOWLEDGE_BASE_PROMPT
+from app.helpers.prompts import KNOWLEDGE_BASE_PROMPT, KNOWLEDGE_BASE_SYSTEM_PROMPT
 
 
 dotenv.load_dotenv()
@@ -32,7 +32,10 @@ class AgentService:
     
     def generate(self, prompt: str) -> str:
         retriever = self.vectorstore.retriever()
-        template = ChatPromptTemplate.from_template(KNOWLEDGE_BASE_PROMPT)
+        template = ChatPromptTemplate.from_messages([
+            ("system", KNOWLEDGE_BASE_SYSTEM_PROMPT),
+            ("human", KNOWLEDGE_BASE_PROMPT),
+        ])
 
         rag_chain = (
             {"context": retriever, "question": RunnablePassthrough()}
