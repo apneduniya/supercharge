@@ -15,9 +15,9 @@ class VectorStore:
         self.embeddings = embeddings or HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"  # Lightweight, fast
         )
-        self.vectorstore_path = vectorstore_path or os.getenv("VECTORSTORE_PATH")
+        self.vectorstore_path = vectorstore_path
         if not self.vectorstore_path:
-            raise ValueError("VECTORSTORE_PATH environment variable not set")
+            raise ValueError("Vectorstore path is required")
 
     def load_data(self, text: str) -> bool:
         try:

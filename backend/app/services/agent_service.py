@@ -19,19 +19,19 @@ dotenv.load_dotenv()
 class AgentService:
     def __init__(self):
         self.pdf_document_handler = PDFDocumentHandler()
-        self.vectorstore = VectorStore()
+        self.knowledge_base_vectorstore = VectorStore(vectorstore_path=os.getenv("KNOWLEDGE_BASE_VECTORSTORE_PATH"))
         self.llm = OllamaLLM(
             model=os.getenv("LLM_MODEL"),
         )
 
     async def add_document(self, document: UploadFile) -> bool:
         text = await self.pdf_document_handler.handle(document)
-        result = self.vectorstore.load_data(text)
+        result = self.knowledge_base_vectorstore.load_data(text)
 
         return result
     
     def generate(self, prompt: str) -> str:
-        retriever = self.vectorstore.retriever()
+        retriever = self.knowledge_base_vectorstore.retriever()
         template = ChatPromptTemplate.from_messages([
             ("system", KNOWLEDGE_BASE_SYSTEM_PROMPT),
             ("human", KNOWLEDGE_BASE_PROMPT),
