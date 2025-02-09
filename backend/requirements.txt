@@ -1,0 +1,15 @@
+python-dotenv
+fastapi
+typing
+apscheduler
+fastapi_restful
+python-multipart
+httpx
+uvicorn
+typing_inspect
+PyMuPDF
+langchain
+faiss-cpu
+langchain-community
+langchain-huggingface
+langchain-ollama

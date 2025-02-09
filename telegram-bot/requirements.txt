@@ -1,0 +1,6 @@
+aiogram
+python-dotenv
+aiohttp
+asyncio
+logging
+typing
