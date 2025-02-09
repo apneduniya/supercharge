@@ -1,6 +1,6 @@
 <h1 align="center">Supercharge ⚡</h1>
 
-<p align="center">An AI-driven solution to assist in creating, managing, and iterating content while streamlining responses to community inquiries.</p>
+<p align="center">An AI-driven solution to assist in creating, managing, and iterating content while streamlining responses to community inquiries for Superteam Vietnam</p>
 
 ## 🎥 DEMO
 Coming Soon
