@@ -13,6 +13,7 @@ class ApiRouter(Enum):
     """
     Enum for API routers.
     """
-    GENERATE = "agent/generate"
+    KNOWLEDGE_BASE_GENERATE = "agent/knowledge-base/generate"
+    SUPERTEAM_MEMBER_AGENT_GENERATE = "agent/superteam-member-agent/generate"
 
 
